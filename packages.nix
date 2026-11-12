@@ -32,6 +32,12 @@
     kdePackages.kate
     arduino-ide
     (vscode-with-extensions.override {
+      vscode = pkgs.vscode.overrideAttrs (old: {
+        postPatch = builtins.replaceStrings
+          [ "resources/app/node_modules/@vscode/ripgrep/bin/rg" ]
+          [ "resources/app/node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg" ]
+          old.postPatch;
+      });
       vscodeExtensions = with vscode-extensions; [
         ms-python.python
         llvm-vs-code-extensions.vscode-clangd
