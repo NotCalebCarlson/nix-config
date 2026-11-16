@@ -23,6 +23,7 @@
     gnumake
     gdb
     git
+    gh
     sshfs
     putty
 
